@@ -56,7 +56,8 @@ public class ConfigFileManager {
         String licenseAgreementWebsite = call.argument("licenseAgreementWebsite");
         boolean animatedStickerPack = call.argument("animatedStickerPack");
         List<List<String>> stickers = call.argument("stickers");
-
+        String iosLink = call.argument("ios_app_store_link");
+        String androidLink = call.argument("android_play_store_link");
         StickerPack newStickerPack = new StickerPack(identifier, name, publisher, trayImageFileName, "", publisherWebsite, privacyPolicyWebsite, licenseAgreementWebsite, "1", false, animatedStickerPack);
         List<Sticker> newStickers = new ArrayList<Sticker>();
         assert stickers != null;
@@ -67,8 +68,8 @@ public class ConfigFileManager {
         }
         
         newStickerPack.setStickers(newStickers);
-        newStickerPack.setAndroidPlayStoreLink("");
-        newStickerPack.setIosAppStoreLink("");
+        newStickerPack.setAndroidPlayStoreLink(androidLink);
+        newStickerPack.setIosAppStoreLink(iosLink);
         return newStickerPack;
     }
     static String getWhatsappType(MethodCall call) {
