@@ -23,6 +23,8 @@ class WhatsappStickersExporter {
     String? publisherWebsite,
     String? privacyPolicyWebsite,
     String? licenseAgreementWebsite,
+    String? androidLink,
+    String? iosLink,
     bool? animatedStickerPack,
     List<List<String>> stickers,
   ) async {
@@ -37,6 +39,9 @@ class WhatsappStickersExporter {
       payload['licenseAgreementWebsite'] = licenseAgreementWebsite;
       payload['animatedStickerPack'] = animatedStickerPack;
       payload['stickers'] = stickers;
+      payload['ios_app_store_link'] = iosLink;
+      payload['android_play_store_link'] = androidLink;
+      
       return await _channel.invokeMethod('addStickerPack', payload);
     } on PlatformException catch (e) {
       switch (e.code) {
